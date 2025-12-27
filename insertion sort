@@ -1,0 +1,49 @@
+## insertion sort :  it takes an one element and place it in an correct order 
+example : 14,9,15,12,6,8,13 
+1.first we take the 14,9 they are not in correct position so thats why we swap both .and we take 9,14,15,12 they are not in order so thats why we swap first 15,12 and then 12,14 so thats why it in order.like that way we sort in order.
+  time complexty : worst case :o(n*n)
+                   average case :o(n*n) because we compare forward once and backwards once so the sum of n natural numbers is n*n-1/2
+                   best case : o(n)
+code :  public class InsertionSort {
+
+    // Function to sort array using Insertion Sort
+    static void insertionSort(int[] arr) {
+        int n = arr.length;
+
+        // Traverse from index 1 to n-1
+        for (int i = 1; i < n; i++) {
+            int key = arr[i];   // element to be inserted
+            int j = i - 1;
+
+            // Shift elements of arr[0..i-1] that are greater than key
+            // to one position ahead
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+
+            arr[j + 1] = key;   // place element at correct position
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {12, 11, 13, 5, 6};
+
+        insertionSort(arr);
+
+        System.out.print("Sorted array: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}
+ or
+ for (int i = 1; i < n; i++) {
+    int key = arr[i];
+    int j = i;
+    while (j > 0 && arr[j - 1] > key) {
+        arr[j] = arr[j - 1];
+        j--;
+    }
+    arr[j] = key;
+}
